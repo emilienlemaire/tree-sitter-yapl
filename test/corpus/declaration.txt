@@ -30,7 +30,7 @@ itn array[6];
                 type: (identifier)
                 name: (identifier)
             )
-            size: (number)
+            size: (int_literal)
         )
         (semi)
     )

@@ -6,11 +6,23 @@ int a = 5;
 
 bool b = true;
 
+double d = 12.3;
+
+float f = .2f;
+
 int array[2] = {1 , 2};
 
 myStruct name(1, 2);
 
 myStruct name1 = {1, 2};
+
+int arrayAccess = array[1];
+
+int attAccess = name.a;
+
+int call = name.meth(12, 3.2);
+
+int call2 = name();
 
 ---
 (source_file
@@ -20,7 +32,7 @@ myStruct name1 = {1, 2};
                 type: (identifier)
                 name: (identifier)
             )
-            value: (number)
+            value: (int_literal)
         )
         (semi)
     )
@@ -35,18 +47,38 @@ myStruct name1 = {1, 2};
         (semi)
     )
     (initialization_statement
+        (simple_initialization
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+            value: (double_literal)
+        )
+        (semi)
+    )
+    (initialization_statement
+        (simple_initialization
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+            value: (float_literal)
+        )
+        (semi)
+    )
+    (initialization_statement
         (array_initialization
             (array_declaration
                 (simple_declaration
                     type: (identifier)
                     name: (identifier)
                 )
-                size: (number)
+                size: (int_literal)
             )
             (initializer_list
-                values: (arguments
-                    (number)
-                    (number)
+                values: (arguments_list
+                    (int_literal)
+                    (int_literal)
                 )
             )
         )
@@ -60,8 +92,8 @@ myStruct name1 = {1, 2};
                     name: (identifier)
                 )
                 values: (arguments
-                    (number)
-                    (number)
+                    (int_literal)
+                    (int_literal)
                 )
             )
         )
@@ -75,13 +107,71 @@ myStruct name1 = {1, 2};
                     name: (identifier)
                 )
                 (initializer_list
-                    values: (arguments
-                        (number)
-                        (number)
+                    values: (arguments_list
+                        (int_literal)
+                        (int_literal)
                     )
                 )
             )
         )
         (semi)
     )
- )
+    (initialization_statement
+        (simple_initialization
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+            value: (array_access
+                name: (identifier)
+                index: (int_literal)
+            )
+        )
+        (semi)
+    )
+    (initialization_statement
+        (simple_initialization
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+            value: (attribute_access
+                struct: (identifier)
+                attribute: (identifier)
+            )
+        )
+        (semi)
+    )
+    (initialization_statement
+        (simple_initialization
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+            value: (function_call
+                function: (attribute_access
+                    struct: (identifier)
+                    attribute: (identifier)
+                )
+                arguments: (arguments
+                    (int_literal)
+                    (double_literal)
+                )
+            )
+        )
+        (semi)
+    )
+    (initialization_statement
+        (simple_initialization
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+            value: (function_call
+                function: (identifier)
+                arguments: (arguments)
+            )
+        )
+        (semi)
+    )
+)
