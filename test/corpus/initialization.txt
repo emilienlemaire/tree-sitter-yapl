@@ -1,0 +1,87 @@
+===============
+Initializations
+===============
+
+int a = 5;
+
+bool b = true;
+
+int array[2] = {1 , 2};
+
+myStruct name(1, 2);
+
+myStruct name1 = {1, 2};
+
+---
+(source_file
+    (initialization_statement
+        (simple_initialization
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+            value: (number)
+        )
+        (semi)
+    )
+    (initialization_statement
+        (simple_initialization
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+            value: (bool_literal)
+        )
+        (semi)
+    )
+    (initialization_statement
+        (array_initialization
+            (array_declaration
+                (simple_declaration
+                    type: (identifier)
+                    name: (identifier)
+                )
+                size: (number)
+            )
+            (initializer_list
+                values: (arguments
+                    (number)
+                    (number)
+                )
+            )
+        )
+        (semi)
+    )
+    (initialization_statement
+        (struct_initialization
+            (struct_constructor_initialization
+                (simple_declaration
+                    type: (identifier)
+                    name: (identifier)
+                )
+                values: (arguments
+                    (number)
+                    (number)
+                )
+            )
+        )
+        (semi)
+    )
+    (initialization_statement
+        (struct_initialization
+            (struct_list_initialization
+                (simple_declaration
+                    type: (identifier)
+                    name: (identifier)
+                )
+                (initializer_list
+                    values: (arguments
+                        (number)
+                        (number)
+                    )
+                )
+            )
+        )
+        (semi)
+    )
+ )

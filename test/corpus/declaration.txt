@@ -1,0 +1,37 @@
+============
+Declarations
+============
+
+int a;
+
+bool b;
+
+itn array[6];
+
+---
+(source_file
+    (declaration_statement
+        (simple_declaration
+            type: (identifier)
+            name: (identifier)
+        )
+        (semi)
+    )
+    (declaration_statement
+        (simple_declaration
+            type: (identifier)
+            name: (identifier)
+        )
+        (semi)
+    )
+    (declaration_statement
+        (array_declaration
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+            size: (number)
+        )
+        (semi)
+    )
+ )
