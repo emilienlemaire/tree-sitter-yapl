@@ -1,0 +1,98 @@
+=====================
+Assignment Statements
+=====================
+
+func f() -> void {
+    int x;
+
+    x = 5;
+
+    aStruct.attribute = 12.6;
+
+    anArray[aFunctionInt()] = 12;
+
+    aVar = aFunctionArray()[2];
+
+    anotherVar = aFunctionStruct().a;
+
+    aThirdVar = aFunctionArrayStruct()[1].a;
+}
+
+---
+
+(source_file
+    (function_definition
+        name: (identifier)
+        parameters: (parameters)
+        type: (identifier)
+        body: (block
+            (declaration_statement
+                (simple_declaration
+                    type: (identifier)
+                    name: (identifier)
+                )
+                (semi)
+            )
+            (assignment_statement
+                variable: (identifier)
+                value: (int_literal)
+                (semi)
+            )
+            (assignment_statement
+                variable: (attribute_access
+                    struct: (identifier)
+                    attribute: (identifier)
+                )
+                value: (double_literal)
+                (semi)
+            )
+            (assignment_statement
+                variable: (array_access
+                    array: (identifier)
+                    index: (function_call
+                        function: (identifier)
+                        arguments: (arguments)
+                    )
+                )
+                value: (int_literal)
+                (semi)
+            )
+            (assignment_statement
+                variable: (identifier)
+                value: (array_access
+                    array: (function_call
+                        function: (identifier)
+                        arguments: (arguments)
+                    )
+                    index: (int_literal)
+                )
+                (semi)
+            )
+            (assignment_statement
+                variable: (identifier)
+                value: (attribute_access
+                    struct: (function_call
+                        function: (identifier)
+                        arguments: (arguments)
+                    )
+                    attribute: (identifier)
+                )
+                (semi)
+            )
+            (assignment_statement
+                variable: (identifier)
+                value: (attribute_access
+                    struct: (array_access
+                        array: (function_call
+                            function: (identifier)
+                            arguments: (arguments)
+                        )
+                        index: (int_literal)
+                    )
+                    attribute: (identifier)
+                )
+                (semi)
+            )
+        )
+    )
+)

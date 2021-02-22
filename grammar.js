@@ -28,11 +28,8 @@ module.exports = grammar({
             $._numbers,
             $._binary_expression,
             $._par_expression,
-            $.identifier,
+            $._accessible_expressions,
             $.bool_literal,
-            $.array_access,
-            $.attribute_access,
-            $.function_call
         ),
 
         _par_expression: $ => seq(
@@ -41,6 +38,15 @@ module.exports = grammar({
             ')'
         ),
 
+        _assignable_expressions: $ => choice(
+            $._callable_expressions,
+            $.array_access
+        ),
+
+        _accessible_expressions: $ => choice(
+            $._assignable_expressions,
+            $.function_call
+        ),
 
         _statements: $ => choice(
             $._expression_statement,
@@ -48,7 +54,8 @@ module.exports = grammar({
             $.initialization_statement,
             $.return_statement,
             $.if_statement,
-            $.for_statement
+            $.for_statement,
+            $.assignment_statement
         ),
 
         _numbers: $ => choice(
@@ -57,7 +64,7 @@ module.exports = grammar({
             $.double_literal
         ),
 
-        _callable: $ => choice(
+        _callable_expressions: $ => choice(
             $.identifier,
             $.attribute_access
         ),
@@ -124,6 +131,13 @@ module.exports = grammar({
             field('body', $.block)
 
         ),
+
+        assignment_statement: $ => prec.right(-1, seq(
+            field('variable', $._assignable_expressions),
+            '=',
+            field('value', $._expression),
+            $.semi
+        )),
 
         function_definition: $ => seq(
             'func',
@@ -350,20 +364,20 @@ module.exports = grammar({
         )),
 
         array_access: $ => prec.left(15, seq(
-            field('name', $.identifier),
+            field('array', $._accessible_expressions),
             '[',
-            field('index', $.int_literal),
+            field('index', $._expression),
             ']'
         )),
 
         attribute_access: $ => prec.left(15, seq(
-            field('struct', $.identifier),
+            field('struct', $._accessible_expressions),
             '.',
             field('attribute', $.identifier)
         )),
 
         function_call: $ => prec.left(15, seq(
-            field('function', $._callable),
+            field('function', $._callable_expressions),
             field('arguments', $.arguments),
         )),
 
