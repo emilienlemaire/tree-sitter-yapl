@@ -3,11 +3,25 @@ func test() -> int {
 }
 
 func test1(int i) -> int {
+// <- keyword.function
+//   ^function
+//         ^type
+//             ^parameter
     return 2 * i + 1;
 }
 
 func test2(int i, int j) -> int {
+//             ^parameter
+//                    ^parameter
     int res = (i + j) * 2;
+
+    return l;
+}
+
+func test2(int i[4], int j) -> int {
+//             ^parameter
+//                       ^parameter
+    int res = (i[0] + j) * 2;
 
     return l;
 }

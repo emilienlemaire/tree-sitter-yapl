@@ -1,28 +1,41 @@
 ; highlights.scm
 
 [
-  "func"
   "return"
-  "for"
   "in"
+  "struct"
+] @keyword
+
+"func" @keyword.function
+
+"for" @repeat
+
+[
   "if"
   "else"
-  "struct"
+] @conditional
+
+[
   "import"
   "export"
-] @keyword
+] @include
 
 (int_literal) @number
 (float_literal) @number
 (double_literal) @number
 
-(bool_literal) @constant
+(bool_literal) @boolean
 
 (comment) @comment
 
-(semi) @delimiter
+[
+  (semi)
+  ","
+  "."
+] @delimiter
 
 [
+  "="
   (times)
   (by)
   (plus)
@@ -38,6 +51,7 @@
   (and)
   (or)
   "::"
+  "..."
 ] @operator
 
 [
@@ -49,16 +63,24 @@
   "]"
 ] @punctuation.bracket
 
+(struct_initialization (struct_constructor_initialization
+                         (simple_declaration
+                           name: (identifier) @constructor
+                           )))
+
+(parameters (simple_declaration
+                 name: (_) @parameter
+                 ))
+(parameters (array_declaration
+             (simple_declaration
+               name: (identifier) @parameter
+               )))
+
 (simple_declaration type: (identifier) @type
                     name: (identifier) @variable)
+
 (function_definition
   name: (identifier) @function
-  parameters: (parameters
-                (simple_declaration
-                  type: (identifier) @type
-                  name: (identifier) @variable.paramter
-                  )*
-                )
   type: (identifier) @type)
 
 (function_call function: (identifier) @function)
@@ -68,14 +90,13 @@
                            ))
 
 (attribute_access
-  struct: (_)
-  attribute: (_) @attribute)
+  attribute: (_) @field)
 
 (struct_definition
   name: (_) @property
   body: (struct_body
           attribute: (declaration_statement (simple_declaration
-                          name: (identifier) @attribute
+                          name: (identifier) @field
                           ))*
           method: (function_definition
                     name: (identifier) @function.method)*

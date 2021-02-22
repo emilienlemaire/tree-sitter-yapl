@@ -3,7 +3,7 @@ int a = 5;
 bool b = true;
 // <- type
 //   ^variable
-//        ^constant
+//        ^boolean
 
 double d = 12.3;
 
@@ -21,7 +21,7 @@ int attAccess = name.a;
 // <- type
 //  ^variable
 //               ^variable
-//                   ^attribute
+//                   ^field
 
 int call = name.meth(12, 3.2);
 // <- type

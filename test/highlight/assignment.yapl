@@ -1,0 +1,15 @@
+func f() ->void {
+    int x;
+
+    x = 5;
+
+    aStruct.attribute = 12.6;
+
+    anArray[aFunctionInt()] = 12;
+
+    aVar = aFunctionArray()[2];
+
+    anotherVar = aFunctionStruct().a;
+
+    aThirdVar = aFunctionArrayStruct()[1].a;
+}
