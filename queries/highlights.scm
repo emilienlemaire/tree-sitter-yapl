@@ -93,7 +93,7 @@
   attribute: (_) @field)
 
 (struct_definition
-  name: (_) @property
+  name: (_) @type
   body: (struct_body
           attribute: (declaration_statement (simple_declaration
                           name: (identifier) @field
@@ -103,4 +103,6 @@
           )
   )
 
+((identifier) @constant.builtin
+              (#match? @constant.builtin "this"))
 (identifier) @variable

@@ -1,9 +1,7 @@
 (function_definition
-  name: (identifier) @definition.function) @scope
-
-(parameters (simple_declaration
-              name: (identifier)) @defintion.parameter
-            )
+  name: (identifier) @definition.function
+  parameters: (parameters (_ (simple_declaration
+                 name: (identifier) @defintion.parameter))*)) @scope
 
 (struct_constructor_initialization (simple_declaration
                                      name: (identifier) @definition.var))
@@ -16,24 +14,24 @@
                     )
           attribute: (_ (simple_declaration
                           name: (identifier) @definition.field
-                          ))) @scope)
+                          ))))
+
+(for_statement
+  loop_variable: (simple_declaration
+                   name: (identifier) @definition.var))
 
 (simple_declaration
-  name: (identifier) @defintion.var)
+  name: (identifier) @definition.var)
 
 (identifier) @reference
 
-((simple_declaration
-  type: (identifier) @reference)
- (set! reference.kind "type"))
-
 ((attribute_access
    attribute: (identifier) @reference)
- (set! reference.kind "field"))
+ (#set! reference.kind "field"))
 
 [
-  (source_file)
   (if_statement)
   (for_statement)
+  (source_file)
 ] @scope
 
