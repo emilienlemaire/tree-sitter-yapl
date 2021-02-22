@@ -1,0 +1,10 @@
+int var;
+// <- type
+//  ^variable
+//     ^delimiter
+
+int array[3];
+// <- type
+//  ^variable
+//        ^number
+//          ^delimiter

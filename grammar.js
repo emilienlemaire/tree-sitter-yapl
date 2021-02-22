@@ -1,5 +1,5 @@
 module.exports = grammar({
-    name: 'YAPL',
+    name: 'yapl',
 
     extras: $ => [
         /\s|\\\r?\n/,
@@ -39,6 +39,7 @@ module.exports = grammar({
             $._binary_expression,
             $._par_expression,
             $._accessible_expressions,
+            $.initializer_list,
             $.bool_literal,
         ),
 

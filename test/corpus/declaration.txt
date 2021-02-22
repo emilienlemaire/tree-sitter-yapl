@@ -6,7 +6,7 @@ int a;
 
 bool b;
 
-itn array[6];
+int array[6];
 
 ---
 (source_file

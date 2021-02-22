@@ -1,0 +1,32 @@
+int a = 5;
+
+bool b = true;
+// <- type
+//   ^variable
+//        ^constant
+
+double d = 12.3;
+
+float f = .2f;
+
+int array[2] = {1 , 2};
+
+myStruct name(1, 2);
+
+myStruct name1 = {1, 2};
+
+int arrayAccess = array[1];
+
+int attAccess = name.a;
+// <- type
+//  ^variable
+//               ^variable
+//                   ^attribute
+
+int call = name.meth(12, 3.2);
+// <- type
+//  ^variable
+//          ^variable
+//               ^function.method
+
+int call2 = name();

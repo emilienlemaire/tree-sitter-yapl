@@ -1,5 +1,5 @@
 {
-  "name": "YAPL",
+  "name": "yapl",
   "word": "identifier",
   "rules": {
     "source_file": {
@@ -96,6 +96,10 @@
         {
           "type": "SYMBOL",
           "name": "_accessible_expressions"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "initializer_list"
         },
         {
           "type": "SYMBOL",
