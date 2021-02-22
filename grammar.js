@@ -3,10 +3,10 @@ module.exports = grammar({
     rules: {
         source_file: $ => repeat(
             choice(
-                $._definition
+                $._top_level_statements
             )),
 
-        _definition: $ => seq(choice(
+        _top_level_statements: $ => seq(choice(
             $.declaration_statement,
             $.initialization_statement,
             $.struct_definition,
@@ -25,14 +25,14 @@ module.exports = grammar({
         ),
 
         _expression: $ => choice(
-            $.identifier,
             $._numbers,
+            $._binary_expression,
+            $._par_expression,
+            $.identifier,
             $.bool_literal,
             $.array_access,
             $.attribute_access,
-            $.function_call,
-            $._binary_expression,
-            $._par_expression
+            $.function_call
         ),
 
         _par_expression: $ => seq(
@@ -43,9 +43,12 @@ module.exports = grammar({
 
 
         _statements: $ => choice(
+            $._expression_statement,
             $.declaration_statement,
             $.initialization_statement,
-            $.return_statement
+            $.return_statement,
+            $.if_statement,
+            $.for_statement
         ),
 
         _numbers: $ => choice(
@@ -75,6 +78,11 @@ module.exports = grammar({
             $.and
         ),
 
+        _expression_statement: $ => seq(
+            $._expression,
+            $.semi
+        ),
+
         declaration_statement: $ => seq(
             $._declaration,
             $.semi
@@ -89,6 +97,32 @@ module.exports = grammar({
             'return',
             $._expression,
             $.semi
+        ),
+
+        if_statement: $ => seq(
+            'if',
+            '(',
+            field('condition', $._expression),
+            ')',
+            field('then', $.block),
+            optional(seq(
+                'else',
+                field('else', $.block)
+            ))
+        ),
+
+        for_statement: $ => seq(
+            'for',
+            '(',
+            field('loop_variable', $.simple_declaration),
+            'in',
+            field('loop_range', choice(
+                $._expression,
+                $.range_expression
+            )),
+            ')',
+            field('body', $.block)
+
         ),
 
         function_definition: $ => seq(
@@ -231,6 +265,12 @@ module.exports = grammar({
             $.or_expr
         ),
 
+        range_expression: $ => seq(
+            field('start', $._expression),
+            '...',
+            field('end', $._expression)
+        ),
+
         add: $ => prec.left(11, seq(
             field('lhs', $._expression),
             $.plus,
@@ -347,6 +387,10 @@ module.exports = grammar({
             'true',
             'false'
         ),
+
+        if_label: $ => 'if',
+
+        else_label: $ => 'else',
 
         identifier: $ => /([a-zA-Z]|_)+([a-zA-Z0-9]|_)*/,
 

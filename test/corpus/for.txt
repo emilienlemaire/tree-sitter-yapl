@@ -1,0 +1,68 @@
+==============
+For Statements
+==============
+
+func f() -> void {
+    for (int i in 0 ... 4) {
+        print(i);
+    }
+}
+
+func f1() -> void {
+    for (int i in array) {
+        print(i);
+    }
+}
+
+---
+(source_file
+    (function_definition
+        name: (identifier)
+        parameters: (parameters)
+        type: (identifier)
+        body: (block
+            (for_statement
+                loop_variable: (simple_declaration
+                    type: (identifier)
+                    name: (identifier)
+                 )
+                 loop_range: (range_expression
+                    start: (int_literal)
+                    end: (int_literal)
+                 )
+                 body: (block
+                    (function_call
+                        function: (identifier)
+                        arguments: (arguments
+                            (identifier)
+                        )
+                    )
+                    (semi)
+                 )
+            )
+        )
+    )
+    (function_definition
+        name: (identifier)
+        parameters: (parameters)
+        type: (identifier)
+        body: (block
+            (for_statement
+                loop_variable: (simple_declaration
+                    type: (identifier)
+                    name: (identifier)
+                 )
+                 loop_range: (identifier)
+                 body: (block
+                    (function_call
+                        function: (identifier)
+                        arguments: (arguments
+                            (identifier)
+                        )
+                    )
+                    (semi)
+                 )
+            )
+        )
+    )
+)

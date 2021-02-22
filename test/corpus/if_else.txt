@@ -1,0 +1,61 @@
+==================
+If Else Statements
+==================
+
+func f1() -> int {
+    if (1) {
+        return 1;
+    }
+}
+
+func f1() -> int {
+    if (isTrue()) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+---
+(source_file
+    (function_definition
+        name: (identifier)
+        parameters: (parameters)
+        type: (identifier)
+        body: (block
+            (if_statement
+                condition: (int_literal)
+                then: (block
+                    (return_statement
+                        (int_literal)
+                        (semi)
+                    )
+                )
+            )
+        )
+    )
+    (function_definition
+        name: (identifier)
+        parameters: (parameters)
+        type: (identifier)
+        body: (block
+            (if_statement
+                condition: (function_call
+                        function: (identifier)
+                        arguments: (arguments)
+                    )
+                then: (block
+                    (return_statement
+                        (int_literal)
+                        (semi)
+                    )
+                )
+                else: (block
+                    (return_statement
+                        (int_literal)
+                        (semi)
+                    )
+                )
+            )
+        )
+    )
+)

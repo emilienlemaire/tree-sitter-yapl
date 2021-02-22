@@ -719,7 +719,59 @@
       "required": false,
       "types": [
         {
+          "type": "add",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "array_access",
+          "named": true
+        },
+        {
+          "type": "attribute_access",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
           "type": "declaration_statement",
+          "named": true
+        },
+        {
+          "type": "divide",
+          "named": true
+        },
+        {
+          "type": "double_literal",
+          "named": true
+        },
+        {
+          "type": "eq_cmp",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
           "named": true
         },
         {
@@ -727,7 +779,51 @@
           "named": true
         },
         {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "leq_cmp",
+          "named": true
+        },
+        {
+          "type": "lth_cmp",
+          "named": true
+        },
+        {
+          "type": "meq_cmp",
+          "named": true
+        },
+        {
+          "type": "mod_expr",
+          "named": true
+        },
+        {
+          "type": "mth_cmp",
+          "named": true
+        },
+        {
+          "type": "multiply",
+          "named": true
+        },
+        {
+          "type": "neq_cmp",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
           "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "semi",
+          "named": true
+        },
+        {
+          "type": "substract",
           "named": true
         }
       ]
@@ -1196,6 +1292,134 @@
     "fields": {}
   },
   {
+    "type": "for_statement",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "loop_range": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "add",
+            "named": true
+          },
+          {
+            "type": "and_expr",
+            "named": true
+          },
+          {
+            "type": "array_access",
+            "named": true
+          },
+          {
+            "type": "attribute_access",
+            "named": true
+          },
+          {
+            "type": "bool_literal",
+            "named": true
+          },
+          {
+            "type": "divide",
+            "named": true
+          },
+          {
+            "type": "double_literal",
+            "named": true
+          },
+          {
+            "type": "eq_cmp",
+            "named": true
+          },
+          {
+            "type": "float_literal",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "int_literal",
+            "named": true
+          },
+          {
+            "type": "leq_cmp",
+            "named": true
+          },
+          {
+            "type": "lth_cmp",
+            "named": true
+          },
+          {
+            "type": "meq_cmp",
+            "named": true
+          },
+          {
+            "type": "mod_expr",
+            "named": true
+          },
+          {
+            "type": "mth_cmp",
+            "named": true
+          },
+          {
+            "type": "multiply",
+            "named": true
+          },
+          {
+            "type": "neq_cmp",
+            "named": true
+          },
+          {
+            "type": "or_expr",
+            "named": true
+          },
+          {
+            "type": "range_expression",
+            "named": true
+          },
+          {
+            "type": "substract",
+            "named": true
+          }
+        ]
+      },
+      "loop_variable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "simple_declaration",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "function_call",
     "named": true,
     "fields": {
@@ -1265,6 +1489,130 @@
         "types": [
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "if_statement",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "add",
+            "named": true
+          },
+          {
+            "type": "and_expr",
+            "named": true
+          },
+          {
+            "type": "array_access",
+            "named": true
+          },
+          {
+            "type": "attribute_access",
+            "named": true
+          },
+          {
+            "type": "bool_literal",
+            "named": true
+          },
+          {
+            "type": "divide",
+            "named": true
+          },
+          {
+            "type": "double_literal",
+            "named": true
+          },
+          {
+            "type": "eq_cmp",
+            "named": true
+          },
+          {
+            "type": "float_literal",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "int_literal",
+            "named": true
+          },
+          {
+            "type": "leq_cmp",
+            "named": true
+          },
+          {
+            "type": "lth_cmp",
+            "named": true
+          },
+          {
+            "type": "meq_cmp",
+            "named": true
+          },
+          {
+            "type": "mod_expr",
+            "named": true
+          },
+          {
+            "type": "mth_cmp",
+            "named": true
+          },
+          {
+            "type": "multiply",
+            "named": true
+          },
+          {
+            "type": "neq_cmp",
+            "named": true
+          },
+          {
+            "type": "or_expr",
+            "named": true
+          },
+          {
+            "type": "substract",
+            "named": true
+          }
+        ]
+      },
+      "else": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "then": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
             "named": true
           }
         ]
@@ -3035,6 +3383,208 @@
     }
   },
   {
+    "type": "range_expression",
+    "named": true,
+    "fields": {
+      "end": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "add",
+            "named": true
+          },
+          {
+            "type": "and_expr",
+            "named": true
+          },
+          {
+            "type": "array_access",
+            "named": true
+          },
+          {
+            "type": "attribute_access",
+            "named": true
+          },
+          {
+            "type": "bool_literal",
+            "named": true
+          },
+          {
+            "type": "divide",
+            "named": true
+          },
+          {
+            "type": "double_literal",
+            "named": true
+          },
+          {
+            "type": "eq_cmp",
+            "named": true
+          },
+          {
+            "type": "float_literal",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "int_literal",
+            "named": true
+          },
+          {
+            "type": "leq_cmp",
+            "named": true
+          },
+          {
+            "type": "lth_cmp",
+            "named": true
+          },
+          {
+            "type": "meq_cmp",
+            "named": true
+          },
+          {
+            "type": "mod_expr",
+            "named": true
+          },
+          {
+            "type": "mth_cmp",
+            "named": true
+          },
+          {
+            "type": "multiply",
+            "named": true
+          },
+          {
+            "type": "neq_cmp",
+            "named": true
+          },
+          {
+            "type": "or_expr",
+            "named": true
+          },
+          {
+            "type": "substract",
+            "named": true
+          }
+        ]
+      },
+      "start": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "add",
+            "named": true
+          },
+          {
+            "type": "and_expr",
+            "named": true
+          },
+          {
+            "type": "array_access",
+            "named": true
+          },
+          {
+            "type": "attribute_access",
+            "named": true
+          },
+          {
+            "type": "bool_literal",
+            "named": true
+          },
+          {
+            "type": "divide",
+            "named": true
+          },
+          {
+            "type": "double_literal",
+            "named": true
+          },
+          {
+            "type": "eq_cmp",
+            "named": true
+          },
+          {
+            "type": "float_literal",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "int_literal",
+            "named": true
+          },
+          {
+            "type": "leq_cmp",
+            "named": true
+          },
+          {
+            "type": "lth_cmp",
+            "named": true
+          },
+          {
+            "type": "meq_cmp",
+            "named": true
+          },
+          {
+            "type": "mod_expr",
+            "named": true
+          },
+          {
+            "type": "mth_cmp",
+            "named": true
+          },
+          {
+            "type": "multiply",
+            "named": true
+          },
+          {
+            "type": "neq_cmp",
+            "named": true
+          },
+          {
+            "type": "or_expr",
+            "named": true
+          },
+          {
+            "type": "substract",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "return_statement",
     "named": true,
     "fields": {},
@@ -3653,6 +4203,10 @@
     "named": false
   },
   {
+    "type": "...",
+    "named": false
+  },
+  {
     "type": "=",
     "named": false
   },
@@ -3677,6 +4231,10 @@
     "named": false
   },
   {
+    "type": "else",
+    "named": false
+  },
+  {
     "type": "eq",
     "named": true
   },
@@ -3689,12 +4247,24 @@
     "named": false
   },
   {
+    "type": "for",
+    "named": false
+  },
+  {
     "type": "func",
     "named": false
   },
   {
     "type": "identifier",
     "named": true
+  },
+  {
+    "type": "if",
+    "named": false
+  },
+  {
+    "type": "in",
+    "named": false
   },
   {
     "type": "leq",
