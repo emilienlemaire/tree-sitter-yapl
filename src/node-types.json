@@ -1535,6 +1535,32 @@
     }
   },
   {
+    "type": "export_statement",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "semi",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "float_literal",
     "named": true,
     "fields": {}
@@ -1865,6 +1891,25 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "import_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "namespaced_identifier",
+          "named": true
+        },
+        {
+          "type": "semi",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -3188,6 +3233,32 @@
     }
   },
   {
+    "type": "namespaced_identifier",
+    "named": true,
+    "fields": {
+      "namespace": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "neq_cmp",
     "named": true,
     "fields": {
@@ -4084,7 +4155,15 @@
           "named": true
         },
         {
+          "type": "export_statement",
+          "named": true
+        },
+        {
           "type": "function_definition",
+          "named": true
+        },
+        {
+          "type": "import_statement",
           "named": true
         },
         {
@@ -4455,6 +4534,10 @@
     "named": false
   },
   {
+    "type": "::",
+    "named": false
+  },
+  {
     "type": "=",
     "named": false
   },
@@ -4475,6 +4558,10 @@
     "named": true
   },
   {
+    "type": "comment",
+    "named": true
+  },
+  {
     "type": "d",
     "named": false
   },
@@ -4485,6 +4572,10 @@
   {
     "type": "eq",
     "named": true
+  },
+  {
+    "type": "export",
+    "named": false
   },
   {
     "type": "f",
@@ -4508,6 +4599,10 @@
   },
   {
     "type": "if",
+    "named": false
+  },
+  {
+    "type": "import",
     "named": false
   },
   {

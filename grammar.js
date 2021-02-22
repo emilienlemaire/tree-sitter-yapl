@@ -1,5 +1,13 @@
 module.exports = grammar({
     name: 'YAPL',
+
+    extras: $ => [
+        /\s|\\\r?\n/,
+        $.comment
+    ],
+
+    word: $ => $.identifier,
+
     rules: {
         source_file: $ => repeat(
             choice(
@@ -10,7 +18,9 @@ module.exports = grammar({
             $.declaration_statement,
             $.initialization_statement,
             $.struct_definition,
-            $.function_definition
+            $.function_definition,
+            $.import_statement,
+            $.export_statement
         )),
 
         _declaration: $ => choice(
@@ -138,6 +148,36 @@ module.exports = grammar({
             field('value', $._expression),
             $.semi
         )),
+
+        import_statement: $ => seq(
+            'import',
+            $.namespaced_identifier,
+            $.semi
+        ),
+
+        export_statement: $ => seq(
+            'export',
+            field('value', $.identifier),
+            $.semi
+        ),
+
+        namespaced_identifier: $ => seq(
+            field('namespace', $.identifier),
+            repeat(seq(
+                '::',
+                field('namespace', $.identifier)
+            )),
+            optional(seq(
+                '{',
+                field('value', $.identifier),
+                repeat(seq(
+                    ',',
+                    field('value', $.identifier)
+                )
+                ),
+                '}'
+            ))
+        ),
 
         function_definition: $ => seq(
             'func',
@@ -436,7 +476,16 @@ module.exports = grammar({
 
         or: $ => '||',
 
-        and: $ => '&&'
+        and: $ => '&&',
+
+        comment: $ => token(choice(
+            seq('//', /(\\(.|\r?\n)|[^\\\n])*/),
+            seq(
+                '/*',
+                /[^*]*\*+([^/*][^*]*\*+)*/,
+                '/'
+            )
+        ))
     }
 });
 

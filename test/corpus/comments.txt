@@ -1,0 +1,12 @@
+========
+Comments
+========
+
+// This is a single line comment.
+/* This is a multiple
+ * lines comment.
+ **/
+
+ ---
+(comment)
+(comment)

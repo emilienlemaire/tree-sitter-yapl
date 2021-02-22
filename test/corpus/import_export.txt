@@ -1,0 +1,51 @@
+========================
+Import Export Statements
+========================
+
+import aNamespace;
+
+import aNamespace::aStruct;
+
+import aNamespace::anotherNS{aFunction};
+
+import aNamespace::anotherNS{aFunction, aStruct};
+
+export aStruct;
+
+---
+(source_file
+    (import_statement
+        (namespaced_identifier
+             namespace: (identifier)
+        )
+        (semi)
+    )
+    (import_statement
+        (namespaced_identifier
+             namespace: (identifier)
+             namespace: (identifier)
+        )
+        (semi)
+    )
+    (import_statement
+        (namespaced_identifier
+             namespace: (identifier)
+             namespace: (identifier)
+             value: (identifier)
+        )
+        (semi)
+    )
+    (import_statement
+        (namespaced_identifier
+             namespace: (identifier)
+             namespace: (identifier)
+             value: (identifier)
+             value: (identifier)
+        )
+        (semi)
+    )
+    (export_statement
+        value: (identifier)
+        (semi)
+    )
+)
