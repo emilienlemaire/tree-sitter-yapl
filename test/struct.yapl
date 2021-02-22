@@ -1,0 +1,10 @@
+struct Test {
+    int i = 1;
+    func getI() -> int {
+        return i;
+    }
+    float f;
+    func getF() -> float {
+        return f;
+    }
+}

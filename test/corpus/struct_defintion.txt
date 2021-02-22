@@ -1,0 +1,155 @@
+=================
+Struct Defintions
+=================
+
+struct Test {
+    int i;
+    flaot f;
+}
+
+struct Test {
+    int i = 1;
+    flaot f;
+}
+
+
+struct Test {
+    int i = 1;
+    float f;
+    func getF() -> float {
+        return f;
+    }
+}
+
+struct Test {
+    int i = 1;
+    func getI() -> int {
+        return i;
+    }
+    float f;
+    func getF() -> float {
+        return f;
+    }
+}
+---
+
+(source_file
+    (struct_definition
+        name: (identifier)
+        body: (struct_body
+            attribute: (declaration_statement
+                (simple_declaration
+                    type: (identifier)
+                    name: (identifier)
+                )
+                (semi)
+            )
+            attribute: (declaration_statement
+                (simple_declaration
+                    type: (identifier)
+                    name: (identifier)
+                )
+                (semi)
+            )
+        )
+    )
+    (struct_definition
+        name: (identifier)
+        body: (struct_body
+            attribute: (initialization_statement
+                (simple_initialization
+                    (simple_declaration
+                        type: (identifier)
+                        name: (identifier)
+                    )
+                    value: (int_literal)
+                )
+                (semi)
+            )
+            attribute: (declaration_statement
+                (simple_declaration
+                    type: (identifier)
+                    name: (identifier)
+                )
+                (semi)
+            )
+        )
+    )
+    (struct_definition
+        name: (identifier)
+        body: (struct_body
+            attribute: (initialization_statement
+                (simple_initialization
+                    (simple_declaration
+                        type: (identifier)
+                        name: (identifier)
+                    )
+                    value: (int_literal)
+                )
+                (semi)
+            )
+            attribute: (declaration_statement
+                (simple_declaration
+                    type: (identifier)
+                    name: (identifier)
+                )
+                (semi)
+            )
+            method: (function_definition
+                name: (identifier)
+                parameters: (parameters)
+                type: (identifier)
+                body: (block
+                    (return_statement
+                        (identifier)
+                        (semi)
+                    )
+                )
+            )
+        )
+    )
+    (struct_definition
+        name: (identifier)
+        body: (struct_body
+            attribute: (initialization_statement
+                (simple_initialization
+                    (simple_declaration
+                        type: (identifier)
+                        name: (identifier)
+                    )
+                    value: (int_literal)
+                )
+                (semi)
+            )
+            method: (function_definition
+                name: (identifier)
+                parameters: (parameters)
+                type: (identifier)
+                body: (block
+                    (return_statement
+                        (identifier)
+                        (semi)
+                    )
+                )
+            )
+            attribute: (declaration_statement
+                (simple_declaration
+                    type: (identifier)
+                    name: (identifier)
+                )
+                (semi)
+            )
+            method: (function_definition
+                name: (identifier)
+                parameters: (parameters)
+                type: (identifier)
+                body: (block
+                    (return_statement
+                        (identifier)
+                        (semi)
+                    )
+                )
+            )
+        )
+    )
+)

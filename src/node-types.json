@@ -721,6 +721,14 @@
         {
           "type": "declaration_statement",
           "named": true
+        },
+        {
+          "type": "initialization_statement",
+          "named": true
+        },
+        {
+          "type": "return_statement",
+          "named": true
         }
       ]
     }
@@ -3016,7 +3024,110 @@
       "required": false,
       "types": [
         {
-          "type": "declaration_statement",
+          "type": "array_declaration",
+          "named": true
+        },
+        {
+          "type": "simple_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "return_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "add",
+          "named": true
+        },
+        {
+          "type": "and_expr",
+          "named": true
+        },
+        {
+          "type": "array_access",
+          "named": true
+        },
+        {
+          "type": "attribute_access",
+          "named": true
+        },
+        {
+          "type": "bool_literal",
+          "named": true
+        },
+        {
+          "type": "divide",
+          "named": true
+        },
+        {
+          "type": "double_literal",
+          "named": true
+        },
+        {
+          "type": "eq_cmp",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "leq_cmp",
+          "named": true
+        },
+        {
+          "type": "lth_cmp",
+          "named": true
+        },
+        {
+          "type": "meq_cmp",
+          "named": true
+        },
+        {
+          "type": "mod_expr",
+          "named": true
+        },
+        {
+          "type": "mth_cmp",
+          "named": true
+        },
+        {
+          "type": "multiply",
+          "named": true
+        },
+        {
+          "type": "neq_cmp",
+          "named": true
+        },
+        {
+          "type": "or_expr",
+          "named": true
+        },
+        {
+          "type": "semi",
+          "named": true
+        },
+        {
+          "type": "substract",
           "named": true
         }
       ]
@@ -3181,8 +3292,42 @@
         {
           "type": "initialization_statement",
           "named": true
+        },
+        {
+          "type": "struct_definition",
+          "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "struct_body",
+    "named": true,
+    "fields": {
+      "attribute": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "declaration_statement",
+            "named": true
+          },
+          {
+            "type": "initialization_statement",
+            "named": true
+          }
+        ]
+      },
+      "method": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "function_definition",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -3209,6 +3354,32 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "struct_definition",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "struct_body",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -3562,8 +3733,16 @@
     "named": true
   },
   {
+    "type": "return",
+    "named": false
+  },
+  {
     "type": "semi",
     "named": true
+  },
+  {
+    "type": "struct",
+    "named": false
   },
   {
     "type": "times",

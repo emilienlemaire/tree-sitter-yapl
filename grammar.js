@@ -9,7 +9,7 @@ module.exports = grammar({
         _definition: $ => seq(choice(
             $.declaration_statement,
             $.initialization_statement,
-            //$.struct_definition,
+            $.struct_definition,
             $.function_definition
         )),
 
@@ -39,6 +39,13 @@ module.exports = grammar({
             '(',
             $._expression,
             ')'
+        ),
+
+
+        _statements: $ => choice(
+            $.declaration_statement,
+            $.initialization_statement,
+            $.return_statement
         ),
 
         _numbers: $ => choice(
@@ -78,6 +85,12 @@ module.exports = grammar({
             $.semi
         ),
 
+        return_statement: $ => seq(
+            'return',
+            $._expression,
+            $.semi
+        ),
+
         function_definition: $ => seq(
             'func',
             field('name', $.identifier),
@@ -87,9 +100,29 @@ module.exports = grammar({
             field('body', $.block)
         ),
 
+        struct_definition: $ => seq(
+            'struct',
+            field('name', $.identifier),
+            field('body', $.struct_body)
+        ),
+
         block: $ => seq(
             '{',
-            repeat($.declaration_statement),
+            repeat($._statements),
+            '}'
+        ),
+
+        struct_body: $ => seq(
+            '{',
+            repeat(
+                choice(
+                    field('attribute', choice(
+                        $.declaration_statement,
+                        $.initialization_statement
+                    )),
+                    field('method', $.function_definition)
+                )
+            ),
             '}'
         ),
 
@@ -105,13 +138,13 @@ module.exports = grammar({
             ']'
         ),
 
-        simple_initialization: $ => prec.right(16, seq(
+        simple_initialization: $ => prec.right(1, seq(
             $.simple_declaration,
             '=',
             field('value', $._expression)
         )),
 
-        array_initialization: $ => prec.right(16, seq(
+        array_initialization: $ => prec.right(1, seq(
             $.array_declaration,
             '=',
             $.initializer_list
@@ -122,12 +155,12 @@ module.exports = grammar({
             $.struct_list_initialization
         ),
 
-        struct_constructor_initialization: $ => prec.left(2, seq(
+        struct_constructor_initialization: $ => prec.left(15, seq(
             $.simple_declaration,
             field('values', $.arguments),
         )),
 
-        struct_list_initialization: $ => prec.right(16, seq(
+        struct_list_initialization: $ => prec.right(1, seq(
             $.simple_declaration,
             '=',
             $.initializer_list
@@ -143,11 +176,11 @@ module.exports = grammar({
             '(',
             optional(
                 seq(
-                    $.declaration_statement,
+                    $._declaration,
                     repeat(
                         seq(
                             ',',
-                            $.declaration_statement
+                            $._declaration
                         )
                     )
                 )
@@ -198,98 +231,98 @@ module.exports = grammar({
             $.or_expr
         ),
 
-        add: $ => prec.left(6, seq(
+        add: $ => prec.left(11, seq(
             field('lhs', $._expression),
             $.plus,
             field('rhs', $._expression)
         )),
 
-        substract: $ => prec.left(6, seq(
+        substract: $ => prec.left(11, seq(
             field('lhs', $._expression),
             $.minus,
             field('rhs', $._expression)
         )),
 
-        multiply: $ => prec.left(5, seq(
+        multiply: $ => prec.left(12, seq(
             field('lhs', $._expression),
             $.times,
             field('rhs', $._expression)
         )),
 
-        divide: $ => prec.left(5, seq(
+        divide: $ => prec.left(12, seq(
             field('lhs', $._expression),
             $.by,
             field('rhs', $._expression)
         )),
 
-        mod_expr: $ => prec.left(5, seq(
+        mod_expr: $ => prec.left(12, seq(
             field('lhs', $._expression),
             $.mod,
             field('rhs', $._expression)
         )),
 
-        lth_cmp: $ => prec.left(9, seq(
+        lth_cmp: $ => prec.left(8, seq(
             field('lhs', $._expression),
             $.lth,
             field('rhs', $._expression)
         )),
 
-        mth_cmp: $ => prec.left(9, seq(
+        mth_cmp: $ => prec.left(8, seq(
             field('lhs', $._expression),
             $.mth,
             field('rhs', $._expression)
         )),
 
-        eq_cmp: $ => prec.left(10, seq(
+        eq_cmp: $ => prec.left(7, seq(
             field('lhs', $._expression),
             $.eq,
             field('rhs', $._expression)
         )),
 
-        neq_cmp: $ => prec.left(10, seq(
+        neq_cmp: $ => prec.left(7, seq(
             field('lhs', $._expression),
             $.neq,
             field('rhs', $._expression)
         )),
 
-        leq_cmp: $ => prec.left(9, seq(
+        leq_cmp: $ => prec.left(8, seq(
             field('lhs', $._expression),
             $.leq,
             field('rhs', $._expression)
         )),
 
-        meq_cmp: $ => prec.left(9, seq(
+        meq_cmp: $ => prec.left(8, seq(
             field('lhs', $._expression),
             $.meq,
             field('rhs', $._expression)
         )),
 
-        and_expr: $ => prec.left(14, seq(
+        and_expr: $ => prec.left(3, seq(
             field('lhs', $._expression),
             $.and,
             field('rhs', $._expression)
         )),
 
-        or_expr: $ => prec.left(15, seq(
+        or_expr: $ => prec.left(2, seq(
             field('lhs', $._expression),
             $.or,
             field('rhs', $._expression)
         )),
 
-        array_access: $ => prec.left(2, seq(
+        array_access: $ => prec.left(15, seq(
             field('name', $.identifier),
             '[',
             field('index', $.int_literal),
             ']'
         )),
 
-        attribute_access: $ => prec.left(2, seq(
+        attribute_access: $ => prec.left(15, seq(
             field('struct', $.identifier),
             '.',
             field('attribute', $.identifier)
         )),
 
-        function_call: $ => prec.left(2, seq(
+        function_call: $ => prec.left(15, seq(
             field('function', $._callable),
             field('arguments', $.arguments),
         )),

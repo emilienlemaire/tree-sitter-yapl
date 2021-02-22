@@ -1,0 +1,94 @@
+===================
+Function Defintions
+===================
+
+func test() -> int {
+    return 1;
+}
+
+func test1(int i) -> int {
+    return 2 * i + 1;
+}
+
+func test2(int i, int j) -> int {
+    int res = (i + j) * 2;
+
+    return l;
+}
+---
+
+(source_file
+    (function_definition
+        name: (identifier)
+        parameters: (parameters)
+        type: (identifier)
+        body: (block
+            (return_statement
+                (int_literal)
+                (semi)
+            )
+        )
+    )
+    (function_definition
+        name: (identifier)
+        parameters: (parameters
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+        )
+        type: (identifier)
+        body: (block
+            (return_statement
+                (add
+                    lhs: (multiply
+                        lhs: (int_literal)
+                        (times)
+                        rhs: (identifier)
+                    )
+                    (plus)
+                    rhs: (int_literal)
+                )
+                (semi)
+            )
+        )
+    )
+    (function_definition
+        name: (identifier)
+        parameters: (parameters
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+            (simple_declaration
+                type: (identifier)
+                name: (identifier)
+            )
+        )
+        type: (identifier)
+        body: (block
+            (initialization_statement
+                (simple_initialization
+                    (simple_declaration
+                        type: (identifier)
+                        name: (identifier)
+                    )
+                    value: (multiply
+                        lhs: (add
+                            lhs: (identifier)
+                            (plus)
+                            rhs: (identifier)
+                        )
+                        (times)
+                        rhs: (int_literal)
+                    )
+                )
+                (semi)
+            )
+            (return_statement
+                (identifier)
+                (semi)
+            )
+        )
+    )
+)
