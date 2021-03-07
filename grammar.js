@@ -169,6 +169,7 @@ module.exports = grammar({
                 field('namespace', $.identifier)
             )),
             optional(seq(
+                '::',
                 '{',
                 field('value', $.identifier),
                 repeat(seq(

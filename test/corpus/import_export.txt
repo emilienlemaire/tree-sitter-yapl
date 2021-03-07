@@ -6,9 +6,9 @@ import aNamespace;
 
 import aNamespace::aStruct;
 
-import aNamespace::anotherNS{aFunction};
+import aNamespace::anotherNS::{aFunction};
 
-import aNamespace::anotherNS{aFunction, aStruct};
+import aNamespace::anotherNS::{aFunction, aStruct};
 
 export aStruct;
 
