@@ -772,7 +772,7 @@
     "named": true,
     "fields": {
       "size": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {

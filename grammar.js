@@ -223,9 +223,13 @@ module.exports = grammar({
 
         array_declaration: $ => seq(
             $.simple_declaration,
-            '[',
-            field('size', $.int_literal),
-            ']'
+            repeat1(
+                seq(
+                    '[',
+                    field('size', $.int_literal),
+                    ']'
+                )
+            )
         ),
 
         simple_initialization: $ => prec.right(1, seq(

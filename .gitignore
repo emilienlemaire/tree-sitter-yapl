@@ -1,1 +1,8 @@
 node_modules
+
+Cargo.lock
+Cargo.toml
+bindings
+target
+test/highlight/struct.yapl
+tree-sitter-yapl.wasm

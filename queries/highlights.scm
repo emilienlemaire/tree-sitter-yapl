@@ -63,46 +63,56 @@
   "]"
 ] @punctuation.bracket
 
+(identifier) @variable
+
+((identifier) @constant.builtin
+              (eq? @constant.builtin "this"))
+
+
+(struct_definition
+  name: (identifier) @type
+)
+
+(simple_declaration type: (identifier) @type
+                    name: (identifier) @variable)
+
+
+(struct_body
+  attribute: (_ (simple_declaration
+                  type: (identifier) @type
+                  name: (identifier) @field
+                  ))
+  method: (function_definition
+            name: (identifier) @function.method
+            )
+  )
+
 (struct_initialization (struct_constructor_initialization
                          (simple_declaration
                            name: (identifier) @constructor
                            )))
 
 (parameters (simple_declaration
-                 name: (_) @parameter
+                 name: (identifier) @parameter
                  ))
+
 (parameters (array_declaration
              (simple_declaration
                name: (identifier) @parameter
-               )))
-
-(simple_declaration type: (identifier) @type
-                    name: (identifier) @variable)
+               )
+             ))
 
 (function_definition
   name: (identifier) @function
   type: (identifier) @type)
 
 (function_call function: (identifier) @function)
+
 (function_call function: (attribute_access
                            struct: (_) @variable
                            attribute: (_) @function.method
                            ))
 
 (attribute_access
-  attribute: (_) @field)
+  attribute: (identifier) @field)
 
-(struct_definition
-  name: (_) @type
-  body: (struct_body
-          attribute: (declaration_statement (simple_declaration
-                          name: (identifier) @field
-                          ))*
-          method: (function_definition
-                    name: (identifier) @function.method)*
-          )
-  )
-
-((identifier) @constant.builtin
-              (#match? @constant.builtin "this"))
-(identifier) @variable
